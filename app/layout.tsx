@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import ReactQueryProvider from "./utils/providers/reactQueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,13 +18,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </body>
       </html>
     </ClerkProvider>
